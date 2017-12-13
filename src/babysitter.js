@@ -19,18 +19,27 @@ function checkEnd(end) {
 
 function calculateHours(start, end, bedtime) {
 	if (checkStart(start) === true && checkEnd(end) === true) {
-		const earlyHours = bedtime - start;
+		let earlyHours;
 		let laterHours;
 		let latestHours;
 
-		if (EARLIEST_START_TIME < end && end < LAST_HOUR) {
+		if (EARLIEST_START_TIME > bedtime && bedtime > FIRST_HOUR) {
+			earlyHours = (24 - start) + (bedtime - 0);
+		} else if (EARLIEST_START_TIME < bedtime && bedtime <= 24 ) {
+			earlyHours = bedtime - start;
+		}
+
+		if (EARLIEST_START_TIME > bedtime && bedtime > FIRST_HOUR) {
+			laterHours = 0;
+		} else if (EARLIEST_START_TIME < end && end < LAST_HOUR) {
 			laterHours = end - bedtime;
 		} else if ( end >= FIRST_HOUR) {
 			laterHours = LAST_HOUR - bedtime;
 		}
 
-
-		if (EARLIEST_START_TIME >= end && end >= FIRST_HOUR) {
+		if (EARLIEST_START_TIME > bedtime && bedtime > FIRST_HOUR) {
+			latestHours = end - bedtime;
+		} else if (EARLIEST_START_TIME >= end && end >= FIRST_HOUR) {
 			latestHours = FIRST_HOUR + end;
 		} else if ( EARLIEST_START_TIME < end && end <= LAST_HOUR) {
 			latestHours = 0;

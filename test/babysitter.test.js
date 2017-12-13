@@ -24,4 +24,8 @@ describe("babysitter function", function() {
 	it("babysitter leaves no later than 4am", function() {
 		expect(calculateHours(17,4,20)).toBe(132);
 	});
+
+	it("provided bedtime is after midnight", function() {
+		expect(calculateHours(17,4,1)).toBe(144);
+	});
 });
