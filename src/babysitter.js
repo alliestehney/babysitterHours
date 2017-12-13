@@ -2,6 +2,7 @@ const EARLIEST_START_TIME = 17;
 const LATEST_END_TIME = 4;
 const LAST_HOUR = 24;
 const FIRST_HOUR = 0;
+const MID_DAY = 12;
 
 function checkStart(start) {
 	if (start % 1 !== 0 ) {
@@ -27,18 +28,18 @@ function checkBedtime(start, end, bedtime) {
 	let convertEnd;
 	if (bedtime % 1 !== 0) {
 		return false;
-	} else if (12 < bedtime && bedtime < start) {
+	} else if (MID_DAY < bedtime && bedtime < start) {
 		return false;
 	} 
 
-	if (12 >= end && end >= 0) {
+	if (MID_DAY >= end && end >= FIRST_HOUR) {
 		convertEnd = 24 - end;
 		if (bedtime > convertEnd) {
 			return false;
 		} else {
 			return true;
 		}
-	} else if (end > 12) {
+	} else if (end > MID_DAY) {
 		if (bedtime > end) {
 			return false;
 		} else {
