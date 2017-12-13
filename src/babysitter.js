@@ -1,11 +1,16 @@
+const EARLIEST_START_TIME = 17;
+const LATEST_END_TIME = 4;
+const LAST_HOUR = 24;
+const FIRST_HOUR = 0;
+
 function checkStart(start) {
-	return start >= 17;
+	return start >= EARLIEST_START_TIME;
 }
 
 function checkEnd(end) {
-	if (end <= 4) {
+	if (end <= LATEST_END_TIME) {
 		return true;
-	} else if ( 24 > end && end > 17) {
+	} else if ( LAST_HOUR > end && end > EARLIEST_START_TIME) {
 		return true;
 	} else {
 		return false
@@ -18,16 +23,16 @@ function calculateHours(start, end, bedtime) {
 		let laterHours;
 		let latestHours;
 
-		if (17 < end && end < 24) {
+		if (EARLIEST_START_TIME < end && end < LAST_HOUR) {
 			laterHours = end - bedtime;
-		} else if ( end >= 0) {
-			laterHours = 24 - bedtime;
+		} else if ( end >= FIRST_HOUR) {
+			laterHours = LAST_HOUR - bedtime;
 		}
 
 
-		if (17 >= end && end >= 0) {
-			latestHours = 0 + end;
-		} else if ( 17 < end && end <= 24) {
+		if (EARLIEST_START_TIME >= end && end >= FIRST_HOUR) {
+			latestHours = FIRST_HOUR + end;
+		} else if ( EARLIEST_START_TIME < end && end <= LAST_HOUR) {
 			latestHours = 0;
 		}	
 
