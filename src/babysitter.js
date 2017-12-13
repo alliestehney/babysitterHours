@@ -13,7 +13,7 @@ function checkEnd(end) {
 	} else if ( LAST_HOUR > end && end > EARLIEST_START_TIME) {
 		return true;
 	} else {
-		return false
+		return false;
 	}
 }
 
@@ -42,8 +42,8 @@ function calculateHours(start, end, bedtime) {
 		let latestHours;
 
 		if (EARLIEST_START_TIME > bedtime && bedtime > FIRST_HOUR) {
-			earlyHours = (24 - start) + (bedtime - 0);
-		} else if (EARLIEST_START_TIME < bedtime && bedtime <= 24 ) {
+			earlyHours = (LAST_HOUR - start) + (bedtime - FIRST_HOUR);
+		} else if (EARLIEST_START_TIME < bedtime && bedtime <= LAST_HOUR) {
 			earlyHours = bedtime - start;
 		}
 
