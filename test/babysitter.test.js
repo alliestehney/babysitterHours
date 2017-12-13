@@ -16,4 +16,12 @@ describe("babysitter function", function() {
 	it("babysitter leaves no later than 4am", function() {
 		expect(calculateHours(17,22,20)).toBe(52);
 	});
+
+	it("babysitter leaves no later than 4am", function() {
+		expect(calculateHours(17,8,20)).toBe(false);
+	});
+
+	it("babysitter leaves no later than 4am", function() {
+		expect(calculateHours(17,4,20)).toBe(132);
+	});
 });
