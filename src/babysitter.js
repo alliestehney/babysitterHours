@@ -17,8 +17,26 @@ function checkEnd(end) {
 	}
 }
 
+function checkBedtime(end, bedtime) {
+	let convertEnd;
+	if (12 >= end && end >= 0) {
+		convertEnd = 24 - end;
+		if (bedtime > convertEnd) {
+			return false;
+		} else {
+			return true;
+		}
+	} else if (end > 12) {
+		if (bedtime > end) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+}
+
 function calculateHours(start, end, bedtime) {
-	if (checkStart(start) === true && checkEnd(end) === true) {
+	if (checkStart(start) === true && checkEnd(end) === true && checkBedtime(end, bedtime) === true) {
 		let earlyHours;
 		let laterHours;
 		let latestHours;
