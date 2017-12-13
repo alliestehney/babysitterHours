@@ -1,6 +1,6 @@
 const calculateHours = require('../src/babysitter');
 
-describe("babysitter function", function() {
+describe("babysitter hours", function() {
 	it("babysitter starts no earlier than 5pm", function() {
 		expect(calculateHours(17,2,19)).toBe(96);
 	});
@@ -48,6 +48,4 @@ describe("babysitter function", function() {
 	it("no fractional hours for pay", function() {
 		expect(calculateHours(18,20.5,19)).toBe(false);
 	});
-
-
 });
