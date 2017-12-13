@@ -17,8 +17,12 @@ function checkEnd(end) {
 	}
 }
 
-function checkBedtime(end, bedtime) {
+function checkBedtime(start, end, bedtime) {
 	let convertEnd;
+	if (12 < bedtime && bedtime < start) {
+		return false;
+	} 
+
 	if (12 >= end && end >= 0) {
 		convertEnd = 24 - end;
 		if (bedtime > convertEnd) {
@@ -36,7 +40,7 @@ function checkBedtime(end, bedtime) {
 }
 
 function calculateHours(start, end, bedtime) {
-	if (checkStart(start) === true && checkEnd(end) === true && checkBedtime(end, bedtime) === true) {
+	if (checkStart(start) === true && checkEnd(end) === true && checkBedtime(start, end, bedtime) === true) {
 		let earlyHours;
 		let laterHours;
 		let latestHours;
@@ -59,7 +63,7 @@ function calculateHours(start, end, bedtime) {
 			latestHours = end - bedtime;
 		} else if (EARLIEST_START_TIME >= end && end >= FIRST_HOUR) {
 			latestHours = FIRST_HOUR + end;
-		} else if ( EARLIEST_START_TIME < end && end <= LAST_HOUR) {
+		} else if (EARLIEST_START_TIME < end && end <= LAST_HOUR) {
 			latestHours = 0;
 		}	
 

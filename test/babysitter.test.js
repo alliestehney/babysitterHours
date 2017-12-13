@@ -40,4 +40,8 @@ describe("babysitter function", function() {
 	it("provided bedtime is after the end time", function() {
 		expect(calculateHours(18,20,23)).toBe(false);
 	});
+
+	it("provided bedtime is before the start time", function() {
+		expect(calculateHours(18,20,17)).toBe(false);
+	});
 });
