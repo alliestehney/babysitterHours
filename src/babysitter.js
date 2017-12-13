@@ -4,11 +4,17 @@ const LAST_HOUR = 24;
 const FIRST_HOUR = 0;
 
 function checkStart(start) {
-	return start >= EARLIEST_START_TIME;
+	if (start % 1 !== 0 ) {
+		return false;
+	} else {
+		return start >= EARLIEST_START_TIME;
+	}
 }
 
 function checkEnd(end) {
-	if (end <= LATEST_END_TIME) {
+	if (end % 1 !== 0 ) {
+		return false;
+	} else if (end <= LATEST_END_TIME) {
 		return true;
 	} else if ( LAST_HOUR > end && end > EARLIEST_START_TIME) {
 		return true;
@@ -19,7 +25,9 @@ function checkEnd(end) {
 
 function checkBedtime(start, end, bedtime) {
 	let convertEnd;
-	if (12 < bedtime && bedtime < start) {
+	if (bedtime % 1 !== 0) {
+		return false;
+	} else if (12 < bedtime && bedtime < start) {
 		return false;
 	} 
 
