@@ -1,0 +1,14 @@
+{
+  "name": "updated-babysitter",
+  "version": "1.0.0",
+  "description": "calculate hours worked for babysitter",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Allie Stehney",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^21.2.1"
+  }
+}
