@@ -1,8 +1,8 @@
 const EARLIEST_START_TIME = 17;
 const LATEST_END_TIME = 4;
-const LAST_HOUR = 24;
 const FIRST_HOUR = 0;
 const MID_DAY = 12;
+const LAST_HOUR = 24;
 
 function checkStart(start) {
 	if (start % 1 !== 0 ) {
